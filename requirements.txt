@@ -1,3 +1,4 @@
 dash==0.39.0
 numpy==1.16.1
 pandas==0.24.1
+sklearn==0.0
