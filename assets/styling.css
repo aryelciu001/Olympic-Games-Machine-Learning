@@ -1,0 +1,144 @@
+.main-title{
+	text-align: center;
+	margin-bottom: 28px;
+	font-family: 'ZCOOL XiaoWei', serif;
+	font-size: 4em;
+}
+.title{
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.boxplot{
+	width: 30vw;
+	height:auto;
+	display: inline-block;
+}
+
+.title-opt{
+	color: #999999;
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#option{
+	margin:20px auto;
+	width: fit-content;
+	cursor: pointer;
+}
+
+.title-active{
+	color: black;
+}
+
+.active{
+	opacity: 1;
+}
+
+.boxplot-container{
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+.active{
+	opacity: 1;
+	transition: opacity 1s;
+	z-index: 0;
+}
+.boxplot-bigcontainer{
+	height: 90vh;
+	text-align:center;
+}
+
+
+/*APP 2*/
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#app2-title{
+	font-size: 50px;
+    text-align: center;
+    margin: 20px;
+    font-family: 'ZCOOL XiaoWei', serif;
+    margin-bottom: 50px;
+}
+
+.container{
+	color: white;
+	padding: 0;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	background: url('https://images.unsplash.com/photo-1502904550040-7534597429ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1249&q=80');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.container2{
+	grid-column: span 1;
+	grid-row: span 1;
+	background-color: rgba(0,0,0,0.6);
+	text-align:center;
+}
+
+input{
+	width: 50%;
+	height: 30px;
+	border: 0px;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	text-align:center;
+}
+
+button{
+	color: white;
+	font-weight: 800;
+	font-family: 'Montserrat', sans-serif;
+	width: 100px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #3A89A5;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+button:hover{
+	box-shadow: -1px -1px 5px #A7FFF6, 1px 1px 5px #A7FFF6
+}
+
+#my-dropdown, #my-dropdown-gender{
+	margin: 0 auto;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	height: 30px;
+	width: 50%;
+}
+
+.Select-menu-outer{
+	color: black;
+}
+
+.container3{
+	grid-column: span 1;
+	grid-row: span 1;
+	display: flex;
+	align-items: center;
+}
+
+#medal-picture{
+	margin: 50px auto;
+	width: 300px;
+	height: 300px;
+}
+
+.infolayer{
+	display: none;
+}
