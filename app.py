@@ -5,6 +5,7 @@ import dash_core_components as dcc
 import prediction
 import data
 
+
 app = dash.Dash(__name__)
 server = app.server
 
@@ -39,7 +40,7 @@ app.layout = html.Div(children = [
             ),
             html.Button('Submit', id='button'),
             html.Div(id='container-button-basic',
-                     children="Let's see how far you can go in the olympic")
+                     children=[html.Span("Let's see how far you can go in the olympic")])
             ], className = 'form')
         ], className='container2'),
     html.Div(children=[
@@ -54,20 +55,16 @@ app.layout = html.Div(children = [
     [dash.dependencies.State('input-box-height', 'value'), dash.dependencies.State('input-box-weight', 'value'), dash.dependencies.State('input-box-age', 'value'), dash.dependencies.State('my-dropdown', 'value'), dash.dependencies.State('my-dropdown-gender', 'value')])
 def update_output(n_clicks, value_height, value_weight, value_age, sport, gender):
     if(value_height == None or value_weight == None or value_age == None or value_height == '' or value_weight == '' or value_age == ''):
-        return "Let's see how far you can go in the olympic"
+        return html.Span("Let's see how far you can go in the olympic"), {'backgroundColor':'#transparent'}
     else:
         value_height = int(value_height)
         value_weight = int(value_weight)
         value_age = int(value_age)
-        result = prediction.make_prediction(value_height, value_weight, value_age,sport, gender, data.export_data)
+        result = prediction.make_prediction(value_height, value_weight, value_age,sport, gender, data.export_undersampling)
         if result == 0:
-            return 'You are unlikely to win :(', {'background':'url(./assets/sad.png)', 'backgroundSize':'cover','backgroundPosition':'center'}
+            return [html.Span('You are unlikely to win :(')], {'background':'url(./assets/sad.png)  center center / cover'}
         elif result == 1:
-            return 'You are likely to win BRONZE', {'background':'url(./assets/bronze-medal.png)', 'backgroundSize':'cover','backgroundPosition':'center'}
-        elif result == 2:
-            return 'You are likely to win SILVER', {'background':'url(./assets/silver-medal.png)', 'backgroundSize':'cover','backgroundPosition':'center'}
-        elif result == 3:
-            return 'You are likely to win GOLD', {'background':'url(./assets/gold-medal.png)', 'backgroundSize':'cover','backgroundPosition':'center'}
+            return [html.Span('You are likely to WIN')], {'background':'url(./assets/gold-medal.png)  center center / cover'}
 
 if __name__ == '__main__':
     app.run_server(debug=True)
