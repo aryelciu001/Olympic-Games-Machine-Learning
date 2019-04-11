@@ -272,9 +272,9 @@ medal_tally_gdp = medal_tally.merge(year_team_gdp,
 #adding medal in numeric value
 def score_to_numeric(x):
     if x=='Gold':
-        return 3
+        return 1
     if x=='Silver':
-        return 2
+        return 1
     if x=='Bronze':
         return 1
     
@@ -282,7 +282,18 @@ def score_to_numeric(x):
 olympicDataClean['Medal_num'] = olympicDataClean['Medal'].apply(score_to_numeric)
 olympicDataClean["Medal_num"].fillna(0,inplace=True)
 
+#undersampling
+#minimum number is silver medalist (7255), hence we use this value for undersampling
+gold_us = olympicDataClean[olympicDataClean['Medal'] == 'Gold'].sample(7255)
+silver_us = olympicDataClean[olympicDataClean['Medal'] == 'Silver'].sample(7255)
+bronze_us = olympicDataClean[olympicDataClean['Medal'] == 'Bronze'].sample(7255)
+DNW_us = olympicDataClean[olympicDataClean['Medal'] == 'DNW'].sample(7255)
+undersampling_df = pd.concat([gold_us, silver_us, bronze_us, DNW_us], axis = 0)
+
 #export
 export_country_noc_medal = country_noc_medal
 export_data = olympicDataClean
 export_medal_tally_gdp = medal_tally_gdp
+export_undersampling = undersampling_df
+
+
